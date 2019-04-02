@@ -23,6 +23,7 @@ procedure bubbleSort( A : list of sortable items )
 end procedure
 =end
 
+##========== USING FOR LOOP =======================================
 def bubbleSort(arr)
     n = arr.length
     while (n > 1) do
@@ -33,15 +34,27 @@ def bubbleSort(arr)
         end 
         n = n-1
     end
+    return arr
+end
 
-    print arr.to_s + "\n"
+##========== USING ENUMERABLE =======================================
+def bubbleSort2(arr)
+    n = arr.length
+    while (n > 1) do
+        (n-1).times do |i|
+            if arr[i] > arr[i+1]
+                arr[i+1], arr[i] = arr[i], arr[i+1]
+            end 
+        end 
+        n = n-1
+    end
+    return arr
 end
 
 
 
-
-#bubbleSort([4,6,1,8,2,90,7]) #testing sample
-#bubbleSort([4,3,78,2,0,2])
+#bubbleSort2([4,6,1,8,2,90,7]) #testing sample
+#bubbleSort([6,1,8,2,90])
 
 
 =begin
@@ -56,14 +69,13 @@ Good BLOCKS tutorial => https://www.youtube.com/watch?v=K8uhD8mtorE
   => ["hi", "hey", "hello"]
 =end
 
-
+##========== USING YIELD =======================================
 def bubble_sort_by(arr)
 
-   #puts 'yo'
     n = arr.length
+    
     while (n > 1) do
         for i in 0...n-1
-           #block
             var = yield arr[i], arr[i+1]
             if var > 0
                arr[i+1], arr[i] = arr[i], arr[i+1]
@@ -71,10 +83,7 @@ def bubble_sort_by(arr)
         end
         n = n-1
     end
-    puts arr
-    arr
-
-
+    return arr
 end
 
 result = bubble_sort_by(['shey','louis','chis'])  do |left,right|
