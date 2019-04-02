@@ -34,7 +34,8 @@ def bubbleSort(arr)
         n = n-1
     end
 
-    puts arr
+    print arr.to_s + "\n"
 end
 
 bubbleSort([4,6,1,8,2,90,7]) #testing sample
+bubbleSort([4,3,78,2,0,2])
