@@ -26,6 +26,7 @@ end procedure
 ##========== USING FOR LOOP =======================================
 def bubbleSort(arr)
     n = arr.length
+    p "yo" if block_given? 
     while (n > 1) do
         for i in 0...n-1 
             if arr[i] > arr[i+1]
@@ -34,6 +35,7 @@ def bubbleSort(arr)
         end 
         n = n-1
     end
+    p arr
     return arr
 end
 
@@ -54,7 +56,7 @@ end
 
 
 #bubbleSort2([4,6,1,8,2,90,7]) #testing sample
-#bubbleSort([6,1,8,2,90])
+bubbleSort([6,1,8,2,90])
 
 
 =begin
@@ -76,9 +78,13 @@ def bubble_sort_by(arr)
     
     while (n > 1) do
         for i in 0...n-1
-            var = yield arr[i], arr[i+1]
-            if var > 0
-               arr[i+1], arr[i] = arr[i], arr[i+1]
+            if block_given?
+                var = yield arr[i], arr[i+1]
+                if var > 0
+                arr[i+1], arr[i] = arr[i], arr[i+1]
+                end
+            else
+                "no block"
             end
         end
         n = n-1
