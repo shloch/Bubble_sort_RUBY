@@ -83,8 +83,8 @@ def bubble_sort_by(arr)
                 if var > 0
                 arr[i+1], arr[i] = arr[i], arr[i+1]
                 end
-            else
-                "no block"
+            elsif arr[i] > arr[i+1] 
+                arr[i+1], arr[i] = arr[i], arr[i+1]                
             end
         end
         n = n-1
@@ -92,7 +92,7 @@ def bubble_sort_by(arr)
     return arr
 end
 
-result = bubble_sort_by(['shey','louis','chis'])  do |left,right|
+bubble_sort_by(['shey','louis','chis'])  do |left,right|
     #puts "#{left.length},#{right.length}"
     left.length - right.length
 
